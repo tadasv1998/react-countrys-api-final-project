@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Header from './Header'
 import './App.css';
 import SearchIcon from '@mui/icons-material/Search';
@@ -8,10 +8,26 @@ import CountryDetails from './CountryDetails';
 
 function App() {
 const [darkMode, setDarkMode] = useState(false)
+const [countries, setCountries] = useState([])
 
 const switchMode = () => {
   setDarkMode((prevState) => !prevState);
 };
+
+useEffect(() => {
+  try {
+    fetchData();
+  } catch (error) {
+    console.log(error)
+  }
+})
+
+const fetchData = async () => {
+  const response = await fetch ('https://restcountries.com/v2/all')
+  const data = await response.json();
+
+  setCountries(data);
+}
 
   return (
   <div className={`app ${darkMode ? 'darkMode' : ''}`}>
@@ -37,7 +53,17 @@ const switchMode = () => {
             </div>
           </div>
           <div className='countries'>
-            <Country darkMode={darkMode}/>
+            {countries.map((country) => (
+              <Country darkMode={darkMode}
+              key={country.alpha3Code}
+              code={country.alpha3Code}
+              name={country.name}
+              capital={country.capital}
+              population={country.population}
+              region={country.region}
+              flag={country.flag}
+              />
+            ))}
           </div>
         </div>} />
         <Route path='country-details' element={<CountryDetails darkMode={darkMode}/>}/>
