@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Header from './Header'
 import './App.css';
 import SearchIcon from '@mui/icons-material/Search';
@@ -11,6 +12,7 @@ function App() {
   const [countries, setCountries] = useState([])
   const countriesInputRef = useRef([])
   const regionRef = useRef();
+  const navigate = useNavigate()
 
   const noCountries = countries.status || countries.message;
 
@@ -86,6 +88,12 @@ function App() {
       }
     }
   };
+
+  const showDetails = (code) => {
+    navigate(`/${code}`);
+  };
+
+
   return (
     <div className={`app ${darkMode ? 'darkMode' : ''}`}>
       <Header onClick={switchMode} darkMode={darkMode} />
@@ -119,13 +127,15 @@ function App() {
                   population={country.population}
                   region={country.region}
                   flag={country.flag}
+                  showDetails={showDetails}
                 />
               ))) : (
                 <h2>No countries found...</h2>
               )}
             </div>
           </div>} />
-        <Route path='country-details' element={<CountryDetails darkMode={darkMode} />} />
+        <Route path='/:countryCode' 
+        element={<CountryDetails darkMode={darkMode} countries={countries} />} />
       </Routes>
 
 
