@@ -11,6 +11,11 @@
   height: 100%;
 }
 
+.app.darkMode {
+  background-color: var(--dark-mode-bg);
+  color: white;
+}
+
 .app_body {
   margin: 15px auto 0;
   padding: 15px;
@@ -21,6 +26,11 @@
   padding: 15px;
   background-color: white;
   box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
+}
+
+.header.darkMode {
+  background-color: var(--dark-mode-element);
+  color: white;
 }
 
 .header_container {
@@ -65,6 +75,15 @@
   font-size: 18px;
 }
 
+.search_input.darkMode {
+  background-color: var(--dark-mode-element);
+  color: white;
+}
+
+.search_input.darkMode input {
+  color: white;
+}
+
 .select_region {
   width: 300px;
   background-color: white;
@@ -79,6 +98,24 @@
   background-color: transparent;
   border: none;
   outline: none;
+}
+
+.select_region.darkMode {
+  background-color: var(--dark-mode-element);
+  color: white;
+}
+
+.select_region.darkMode select {
+  color: white;
+}
+
+.select_region.darkMode option {
+  background-color: var(--dark-mode-element);
+  color: white;
+}
+
+.select_input.darkMode input::placeholder {
+  color: white;
 }
 
 .countries {
@@ -100,6 +137,12 @@
   cursor: pointer;
 }
 
+.country.darkMode {
+  background-color: var(--dark-mode-element);
+  color: white;
+}
+
+
 .country .flag_container {
   height: 170px;
   width: 100%;
@@ -118,6 +161,11 @@
 .country .values {
   color: gray;
 }
+
+.country .values.darkMode {
+  color: lightgray;
+}
+
 
 .country .details {
   padding: 15px;
@@ -150,6 +198,11 @@
   cursor: pointer;
 }
 
+.back.darkMode {
+  background-color: var(--dark-mode-element);
+  color: white;
+}
+
 .country_details_body {
   margin: 15px auto 0;
   padding: 15px;
@@ -173,6 +226,10 @@
   flex: 0.5;
 }
 
+.info.darkMode {
+  color: white;
+}
+
 .info_container {
   display: flex;
   justify-content: space-between;
@@ -188,6 +245,10 @@
   color: gray;
 }
 
+.info .values.darkMode {
+  color: lightgray;
+}
+
 .border_country {
   padding: 5px 10px;
   background-color: white;
@@ -195,5 +256,10 @@
   margin: 10px;
   cursor: pointer;
   box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
-
 }
+
+.border_country.darkMode {
+  background-color: var(--dark-mode-element);
+  color: white;
+}
+
