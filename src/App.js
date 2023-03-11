@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Header from './Header'
 import './App.css';
 import SearchIcon from '@mui/icons-material/Search';
@@ -9,6 +9,8 @@ import CountryDetails from './CountryDetails';
 function App() {
 const [darkMode, setDarkMode] = useState(false)
 const [countries, setCountries] = useState([])
+const countriesInputRef = useRef([])
+const regionRef = useRef();
 
 const switchMode = () => {
   setDarkMode((prevState) => !prevState);
@@ -20,7 +22,7 @@ useEffect(() => {
   } catch (error) {
     console.log(error)
   }
-})
+}, []);
 
 const fetchData = async () => {
   const response = await fetch ('https://restcountries.com/v2/all')
@@ -28,6 +30,29 @@ const fetchData = async () => {
 
   setCountries(data);
 }
+
+const searchCountries = () => {
+  const searchValue = countriesInputRef.current.value;
+
+  if (searchValue.trim()) {
+    const fetchSearch = async () => {
+      const response = await fetch(
+        `https://restcountries.com/v2/name/${searchValue}`
+        );
+      const data = await response.json();
+
+      setCountries(data);
+    };
+
+    try {
+      fetchSearch();
+    } catch (error) {
+      console.log(error);
+    }
+  } else {
+    fetchData();
+  }
+};
 
   return (
   <div className={`app ${darkMode ? 'darkMode' : ''}`}>
@@ -39,10 +64,10 @@ const fetchData = async () => {
           <div className='inputs'>
             <div className={`search_input ${darkMode ? 'darkMode' : ''}`}>
               <SearchIcon />
-              <input type='text' placeholder='Search for a contry...' />
+              <input type='text' placeholder='Search for a contry...' ref={countriesInputRef} onChange={searchCountries}/>
             </div>
             <div className={`select_region ${darkMode ? 'darkMode' : ''}`}>
-              <select>
+              <select ref={regionRef}>
                 <option>All</option>
                 <option>Africa</option>
                 <option>Americas</option>
