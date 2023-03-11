@@ -1,5 +1,7 @@
 import Header from './Header'
 import './App.css';
+import SearchIcon from '@mui/icons-material/Search';
+import Country from './Country'
 
 function App() {
   return <div className='app'>
@@ -7,6 +9,7 @@ function App() {
     <div className='app_body'>
       <div className='inputs'>
         <div className='search_input'>
+          <SearchIcon />
           <input type='text' placeholder='Search for a contry...' />
         </div>
         <div className='select_region'>
@@ -19,6 +22,9 @@ function App() {
             <option>Oceania</option>
           </select>
         </div>
+      </div>
+      <div className='countries'>
+        <Country />
       </div>
     </div>
   </div>
