@@ -2,7 +2,7 @@ import React from 'react'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { useParams, useNavigate } from 'react-router-dom';
 
-function CountryDetails({darkMode, countries}) {
+function CountryDetails({darkMode, countries, refetch}) {
     const params = useParams();
     const navigate = useNavigate();
 
@@ -38,7 +38,7 @@ function CountryDetails({darkMode, countries}) {
             });
 
             country.borders?.forEach((border) => {
-                borders.push(border.name);
+                borders.push(border);
             });
         }
     });
@@ -145,8 +145,15 @@ function CountryDetails({darkMode, countries}) {
                     Border Countries:
                     {borders.length ? (
                         borders.map((border) => (
-                            <div className={`border_country ${darkMode ? 'darkMode' : ''}`}>
-                            {border}
+                            <div
+                            key={border}
+                            className={`border_country ${darkMode ? 'darkMode' : ''}`}
+                            onClick={() => {
+                                refetch();
+                                navigate(`/${border}`)
+                            }}
+                            >
+                                {border}
                         </div>
                         ))
                     ) : (
