@@ -1,5 +1,5 @@
 {
-  "homepage": "https://github.com/tadasv1998/react-countrys-api-final-project",
+  "homepage": "https://tadasv1998.github.io/react-countrys-api-final-project",
   "name": "react-countrys-api-final-project",
   "version": "0.1.0",
   "private": true,
@@ -42,5 +42,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^5.0.0"
   }
 }
