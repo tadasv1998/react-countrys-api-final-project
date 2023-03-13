@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/react-countrys-api-final-project/static/css/main.4aa0e77f.css",
+    "main.js": "/react-countrys-api-final-project/static/js/main.35fbba53.js",
+    "index.html": "/react-countrys-api-final-project/index.html",
+    "main.4aa0e77f.css.map": "/react-countrys-api-final-project/static/css/main.4aa0e77f.css.map",
+    "main.35fbba53.js.map": "/react-countrys-api-final-project/static/js/main.35fbba53.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.4aa0e77f.css",
+    "static/js/main.35fbba53.js"
+  ]
+}
