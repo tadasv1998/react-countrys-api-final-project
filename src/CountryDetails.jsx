@@ -45,7 +45,7 @@ function CountryDetails({darkMode, countries, refetch}) {
 
     const goBack = () => {
         navigate('/');
-    }
+    };
 
     return (
         <div className='Country_details'>
@@ -99,14 +99,18 @@ function CountryDetails({darkMode, countries, refetch}) {
                                 {currencies.map(currency => {
                                 if (currencies.indexOf(currency) !== currencies.length - 1) {
                                     return (
-                                        <span className={`values ${darkMode ? 'darkMode' : ''}`}>
+                                        <span 
+                                        key ={currency}
+                                        className={`values ${darkMode ? 'darkMode' : ''}`}>
                                     {' '}
                                     {currency},
                                 </span>
                                     );
                                 } else {
                                     return (
-                                        <span className={`values ${darkMode ? 'darkMode' : ''}`}>
+                                        <span
+                                         key = {currency}
+                                         className={`values ${darkMode ? 'darkMode' : ''}`}>
                                         {' '}
                                         {currency},
                                     </span> 
